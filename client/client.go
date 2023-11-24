@@ -102,7 +102,7 @@ func (client *Client) TaskRestart(name string, task string) (*Status, error) {
 func post[T any](client *Client, url string, body []byte) (*T, *Status, error) {
 	var emptyResult T
 
-	request, err := http.NewRequest(http.MethodPost, url, bytes.NewBuffer(body))
+	request, err := http.NewRequest(http.MethodPost, client.url+url, bytes.NewBuffer(body))
 
 	if err != nil {
 		return nil, nil, err
